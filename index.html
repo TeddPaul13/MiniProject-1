@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+  <link href="style.css" rel="stylesheet" />
+
+  <title>AFL TEAM STATS</title>
+</head>
+
+<body>
+  <!---Template for cards-->
+  <template id="card-template">
+    <div class="card col-4">
+      <img src="#" class="card-img-top" id="teamLogo" alt="Team Logo">
+      <div class="card-body">
+
+        <h5 class="card-title text-center">Card title</h5>
+        <!-- <p class="card-text">
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p> -->
+      </div>
+    </div>
+  </template>
+
+  <!---Template for Table-->
+
+  <div class="container">
+    <!--Navbar START-->
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">AFL TEAM STATS</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="allteams.html">All Teams</a>
+          </li>
+
+        </ul>
+
+        <!--Dropdown Menu-------->
+
+        <div class="dropdown">
+          <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            View Standings
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="standings.html">2022 Standings</a>
+            <a class="dropdown-item" href="#">2023 Standings</a>
+          </div>
+        </div>
+
+        <!--Search and Form Button--------->
+
+        <form class="d-flex">
+          <input class="form-control mr-sm-2" type="search" placeholder="Search Your Team">
+          <button class="btn btn-outline-success my-sm-2 mr-sm-2" type="submit">Search</button>
+        </form>
+      </div>
+    </nav>
+    <!--Navbar END-->
+
+    <!--AFL Heading-->
+    <div class="heading">
+      <h1 class="text-center mt-4"> Australian Football League</h1>
+    </div>
+    <!--AFL Heading End-->
+
+    <!--Game Highligts video-->
+    <div class="row justify-content-center">
+      <div class=" col-4 highlights mt-4 align-self-center">
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3-_xsT6XevI?autoplay=1&mute=1"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+      <!--Game Highligts video END-->
+
+      <div class="container-fluid">
+        <div id="team-list" class="row"></div>
+
+      </div>
+
+    </div><!--Container END-->
+
+
+</body>
+<script>
+  function getTeamDetails(teamsObj) {
+    const template = document.getElementById("card-template").content.cloneNode(true);
+    template.querySelector('.card-title').innerText = teamsObj.name //put team name as card title
+    // template.querySelector('.card-text').innerText = "Upcoming games: Last Score: Ranking: Playing Ground:";
+    template.querySelector('#teamLogo').src = "https://squiggle.com.au/" + teamsObj.logo;
+
+    document.querySelector('#team-list').appendChild(template);
+  }
+
+  const fetchTeamByname = async () => {
+    const options = {
+      method: "GET",
+    };
+
+    let response = await fetch(`https://api.squiggle.com.au/?q=teams`,
+      options
+    );
+
+    if (response.status === 200) {
+      response = await response.json();
+      console.log(response)
+
+      const teamsArray = response.teams
+
+      for (let i = 0; i < 4; i++) {     //display on four teams from the array.
+        const team = teamsArray[i];
+        getTeamDetails(team)
+      }
+
+    };
+  };
+  fetchTeamByname();
+
+</script>
+
+</html>
