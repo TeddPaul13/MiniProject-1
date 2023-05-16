@@ -1,8 +1,8 @@
 ### 1. What was your requirements gathering and design process? Was it useful/successful?
-The design process was succesful.
-The app provides statistics on AFL teams
-The user can search ther favorite teams and see upcoming games, previous scores, ranks, wins, losses.
-The user can view yearly standings for all teamings
+a. The design process was succesful.
+b. The app provides statistics on AFL teams
+c. The user can search ther favorite teams and see upcoming games, previous scores, ranks, wins, losses.
+d. The user can view yearly standings for all teamings
 ### 2. Give a high level overview of your application and its features
 The app fetches data from external API and displays in images, texts and tables.
 The standings of the teams are displayed in a table.
