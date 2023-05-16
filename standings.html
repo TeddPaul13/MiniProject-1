@@ -60,8 +60,8 @@
             View Standings
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" href="#">2022 Standings</a>
-            <a class="dropdown-item" href="#">2023 Standings</a>
+            <a class="dropdown-item" id="yearSelector" href="standings.html">2022 Standings</a>
+            <a class="dropdown-item" id="yearSelector2" href="standings.html">2023 Standings</a>
           </div>
         </div>
 
@@ -120,6 +120,10 @@
       method: "GET",
     };
 
+    let selectedYearForStandings = document.getElementById('yearSelector').innerHTML;
+
+    console.log(selectedYearForStandings)
+
     let response = await fetch(`https://api.squiggle.com.au/?q=standings&year=2022`,
       options
     );
@@ -131,9 +135,6 @@
 
       for (let i = 0; i < standingsArray.length; i++) {     //display on four teams from the array.
         const EachTeamStanding = standingsArray[i];
-        console.log(EachTeamStanding)
-        console.log('Testing Api')
-        console.log(EachTeamStanding.rank)
         getTeamStandingsDetails(EachTeamStanding)
       }
 

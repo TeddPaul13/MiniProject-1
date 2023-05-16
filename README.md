@@ -38,3 +38,6 @@
 - The search field to offer suggestions when user types a letter.
 - The latest video highlights should be fetched from Youtube API and uploaded on the page.
 - Add sporty colors to the design.
+- Add standings for more years.
+- Add aside sections showing latest news about AFL
+- Add section for advertisements and betting tips.

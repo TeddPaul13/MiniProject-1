@@ -18,19 +18,22 @@
 </head>
 
 <body>
+    <!---Template for cards-->
     <template id="card-template">
-        <div class="card col-3">
+        <div class="card col-4">
             <img src="#" class="card-img-top" id="teamLogo" alt="Team Logo">
             <div class="card-body">
 
                 <h5 class="card-title text-center">Card title</h5>
                 <!-- <p class="card-text">
-                    Some quick example text to build on the card title and make up the
-                    bulk of the card's content.
-                </p> -->
+          Some quick example text to build on the card title and make up the
+          bulk of the card's content.
+        </p> -->
             </div>
         </div>
     </template>
+
+    <!---Template for Table-->
 
     <div class="container">
         <!--Navbar START-->
@@ -52,7 +55,9 @@
                     </li>
 
                 </ul>
-                <!--Dropdown Menu--------------->
+
+                <!--Dropdown Menu-------->
+
                 <div class="dropdown">
                     <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton"
                         data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -60,36 +65,42 @@
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="standings.html">2022 Standings</a>
-                        <a class="dropdown-item" href="#">2023 Standings</a>
+                        <a class="dropdown-item" href="standings.html">2023 Standings</a>
                     </div>
                 </div>
 
+                <!--Search and Form Button--------->
 
                 <form class="d-flex">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search Your Team">
+                    <input class="form-control mr-sm-2" id="teamSearch" type="search" placeholder="Search Your Team">
                     <button class="btn btn-outline-success my-sm-2 mr-sm-2" type="submit">Search</button>
                 </form>
             </div>
         </nav>
-        <!--Navbar END---------------------------------------------------------------------------------------->
+        <!--Navbar END-->
 
         <!--AFL Heading-->
         <div class="heading">
-            <h1 class="text-center mt-4"> Australian Football League Teams</h1>
+            <h1 class="text-center mt-4"> Australian Football League</h1>
         </div>
-        <div class="heading">
-            <h2 class="text-center mt-4 " id="headerToPrompt"> Click on your Favorite Team to view the STATS</h2>
-        </div>
-        <!--AFL Heading End--------------------------------------------------------------------------------->
+        <!--AFL Heading End-->
 
+        <!--Game Highligts video-->
+        <div class="row justify-content-center">
+            <div class=" col-4 highlights mt-4 align-self-center">
+                <iframe width="100%" height="100%" src="https://www.youtube.com/embed/3-_xsT6XevI?autoplay=1&mute=1"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+            </div>
+            <!--Game Highligts video END-->
 
-        <!--Div where the templates are displyed-->
-        <div class="container-fluid">
-            <div id="team-list" class="row"></div>
+            <div class="container-fluid">
+                <div id="team-list" class="row"></div>
 
-        </div>
+            </div>
 
-    </div><!--Container END--------------------------------------------------------------------------->
+        </div><!--Container END-->
 
 
 </body>
@@ -97,7 +108,7 @@
     function getTeamDetails(teamsObj) {
         const template = document.getElementById("card-template").content.cloneNode(true);
         template.querySelector('.card-title').innerText = teamsObj.name //put team name as card title
-        //template.querySelector('.card-text').innerText = "Upcoming games: Last Score: Ranking: Playing Ground:";
+        // template.querySelector('.card-text').innerText = "Upcoming games: Last Score: Ranking: Playing Ground:";
         template.querySelector('#teamLogo').src = "https://squiggle.com.au/" + teamsObj.logo;
 
         document.querySelector('#team-list').appendChild(template);
@@ -108,24 +119,35 @@
             method: "GET",
         };
 
+        let searchTeamName = document.getElementById("teamSerch").value;
+
         let response = await fetch(`https://api.squiggle.com.au/?q=teams`,
             options
         );
 
         if (response.status === 200) {
             response = await response.json();
-            console.log(response)
 
             const teamsArray = response.teams
 
-            for (let i = 0; i < teamsArray.length; i++) {     //display all teams from the array.
-                const team = teamsArray[i];
-                getTeamDetails(team)
-            }
+            let searchValue = teamsArray.filter(item => item.name === searchTeamName)
 
-        };
+            
+
+
+            getTeamDetails(team)
+        }
+
     };
     fetchTeamByname();
+
+  
+
+  
+
+
+
+
 </script>
 
 </html>
