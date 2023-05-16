@@ -1,22 +1,29 @@
-.navbar-brand{
-    margin-left: 10px;
+.navbar-brand {
+  margin-left: 10px;
 }
-.d-flex,.form-control, .dropdown{
-    margin-right: 10px;
+
+.d-flex,
+.form-control,
+.dropdown {
+  margin-right: 10px;
 }
-.highlights{
-    height: 560px;
-    width: 1080px;
+
+.highlights {
+  height: 560px;
+  width: 1080px;
 }
-.card{
-    margin: 10px;
-    width: 300px;
+
+.card {
+  margin: 10px;
+  width: 300px;
 
 }
-#headerToPrompt{
+
+#headerToPrompt {
   color: #0d5513;
 }
-.container{
+
+.container {
   background-color: #deecc4;
 }
 
@@ -31,30 +38,69 @@
     animation: flickerAnimation .5s infinite; 
   }*/
 
- @keyframes flickerAnimation {
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+@keyframes flickerAnimation {
+  0% {
+    opacity: 1;
   }
-  @-o-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+
+  50% {
+    opacity: 0;
   }
-  @-moz-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+
+  100% {
+    opacity: 1;
   }
-  @-webkit-keyframes flickerAnimation{
-    0%   { opacity:1; }
-    50%  { opacity:0; }
-    100% { opacity:1; }
+}
+
+@-o-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
   }
-  #headerToPrompt {
-     -webkit-animation: flickerAnimation .8s infinite; /*Safari*/
-     -moz-animation: flickerAnimation .8s infinite; /*Firefox*/
-     -o-animation: flickerAnimation .8s infinite; /*Opera*/
-      animation: flickerAnimation .8s infinite; /*IE*/
-  } 
-   
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes flickerAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#headerToPrompt {
+  -webkit-animation: flickerAnimation .8s infinite;
+  /*Safari*/
+  -moz-animation: flickerAnimation .8s infinite;
+  /*Firefox*/
+  -o-animation: flickerAnimation .8s infinite;
+  /*Opera*/
+  animation: flickerAnimation .8s infinite;
+  /*IE*/
+}

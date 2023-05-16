@@ -114,32 +114,32 @@
         document.querySelector('#team-list').appendChild(template);
     }
 
-    const fetchTeamByname = async () => {
-        const options = {
-            method: "GET",
-        };
+    // const fetchTeamByname = async () => {
+    //     const options = {
+    //         method: "GET",
+    //     };
 
-        let searchTeamName = document.getElementById("teamSerch").value;
+    //     let searchTeamName = document.getElementById("teamSerch").value;
 
-        let response = await fetch(`https://api.squiggle.com.au/?q=teams`,
-            options
-        );
+    //     let response = await fetch(`https://api.squiggle.com.au/?q=teams`,
+    //         options
+    //     );
 
-        if (response.status === 200) {
-            response = await response.json();
+    //     if (response.status === 200) {
+    //         response = await response.json();
 
-            const teamsArray = response.teams
+    //         const teamsArray = response.teams
 
-            let searchValue = teamsArray.filter(item => item.name === searchTeamName)
-
-            
+    //         let searchValue = teamsArray.filter(item => item.name === searchTeamName)
 
 
-            getTeamDetails(team)
-        }
 
-    };
-    fetchTeamByname();
+
+    //         getTeamDetails(team)
+    //     }
+
+    // };
+    // fetchTeamByname();
 
   
 
