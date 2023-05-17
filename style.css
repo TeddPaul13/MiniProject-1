@@ -26,6 +26,13 @@
 .container {
   background-color: #deecc4;
 }
+th{
+  color:#dd2c15
+}
+.tableheader{
+  color:#8a136c;
+  font-size: 25px;
+}
 
 /* @keyframes flickerAnimation {
     0%    { opacity: 0; }
